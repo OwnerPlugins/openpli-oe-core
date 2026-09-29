@@ -44,6 +44,8 @@ do_install() {
     elif [ ${MACHINE} = "sfx6008" ]; then
         install -m 0644 ${S}/boxes/sfx6008.png ${D}${datadir}/enigma2/hardware/sfx6008_front.png
         install -m 0644 ${S}/boxes/sfx6018.png ${D}${datadir}/enigma2/hardware/sfx6018_front.png
+    elif [ ${MACHINE} = "multiboxpro" ]; then
+        install -m 0644 ${S}/boxes/multibox.png ${D}${datadir}/enigma2/hardware/multiboxpro_front.png
     else
         install -m 0644 ${S}/boxes/${MACHINE}.png ${D}${datadir}/enigma2/hardware/${MACHINE}_front.png
     fi

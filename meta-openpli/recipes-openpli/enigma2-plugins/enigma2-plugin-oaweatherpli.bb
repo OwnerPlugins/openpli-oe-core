@@ -13,7 +13,7 @@ PV = "4.7+git${SRCPV}"
 PKGV = "4.7+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://github.com/Belfagor2005/OAWeather-Pli.git;protocol=https;branch=main"
+SRC_URI = "git://github.com/OwnerPlugins/OAWeather-Pli.git;protocol=https;branch=main"
 
 S = "${WORKDIR}/git"
 

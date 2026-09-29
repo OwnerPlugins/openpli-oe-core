@@ -11,7 +11,7 @@ PV = "2.4+git${SRCPV}"
 PKGV = "2.4+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://github.com/Belfagor2005/LinuxsatPanel.git;protocol=https;branch=main"
+SRC_URI = "git://github.com/OwnerPlugins/LinuxsatPanel.git;protocol=https;branch=main"
 
 S = "${WORKDIR}/git"
 

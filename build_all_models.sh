@@ -4,8 +4,40 @@
 ## Modified to support batch building of 131 models
 # # ./build_all_models.sh compare
 # ===== CONFIG =====
-BUILD_VERSION="07"  # <-- SET BUILD VERSION HERE
+BUILD_VERSION="08"  # <-- SET BUILD VERSION HERE
 BUILD_NAME="corvoboys"
+
+export PSEUDO_DISABLED=1
+export PSEUDO_UNLOAD=1
+
+
+export BB_SRCREV_POLICY=cache
+export BB_FETCH_PREMIRRORONLY=1
+export BB_NO_NETWORK=1 
+
+export GIT_CONFIG_COUNT=4
+export GIT_CONFIG_KEY_0=http.postBuffer
+export GIT_CONFIG_VALUE_0=524288000
+export GIT_CONFIG_KEY_1=http.lowSpeedLimit
+export GIT_CONFIG_VALUE_1=0
+export GIT_CONFIG_KEY_2=core.compression
+export GIT_CONFIG_VALUE_2=0
+export GIT_CONFIG_KEY_3=core.fsyncObjectFiles
+export GIT_CONFIG_VALUE_3=0
+export GIT_SSL_NO_VERIFY=1
+
+
+GITHUB_IP=$(dig +short github.com | head -1)
+if [ -n "$GITHUB_IP" ]; then
+    sudo sed -i '/github.com/d' /etc/hosts
+    echo "$GITHUB_IP github.com" | sudo tee -a /etc/hosts
+else
+    echo "Impossibile risolvere github.com, uso IP fisso 140.82.121.4"
+    sudo sed -i '/github.com/d' /etc/hosts
+    echo "140.82.121.4 github.com" | sudo tee -a /etc/hosts
+fi
+
+
 
 # Se l'argomento è "compare", esegue solo il confronto modelli ed esce
 if [ "$1" = "compare" ]; then
@@ -105,7 +137,7 @@ declare -A PRODUCERS=(
     [21]="Zgemma"
 )
 
-# Models for each manufacturer
+Models for each manufacturer
 declare -A MODELS_Abcom=([0]="pulse4k" [1]="pulse4kmini")
 declare -A MODELS_Amiko=([0]="vipercombo" [1]="vipercombohdd" [2]="viperslim" [3]="vipert2c")
 declare -A MODELS_Axas=([0]="e4hd")
@@ -128,6 +160,7 @@ declare -A MODELS_Xpeedc=([0]="xpeedc")
 declare -A MODELS_Xsarius=([0]="fusionhd" [1]="fusionhdse" [2]="galaxy4k" [3]="purehd" [4]="purehdse" [5]="revo4k")
 declare -A MODELS_Xtrend=([0]="et4x00" [1]="et5x00" [2]="et6x00" [3]="et7x00" [4]="et9x00" [5]="et8000" [6]="et8500" [7]="et10000")
 declare -A MODELS_Zgemma=([0]="sh1" [1]="h3" [2]="h4" [3]="h5" [4]="h6" [5]="h7" [6]="h8" [7]="h9" [8]="h9combo" [9]="h9combose" [10]="h9se" [11]="h10" [13]="h11" [14]="h17" [15]="h17twin" [16]="hzero" [17]="i55" [18]="i55plus" [19]="i55se" [20]="lc")
+
 
 # Build all models function
 function build_all_models {

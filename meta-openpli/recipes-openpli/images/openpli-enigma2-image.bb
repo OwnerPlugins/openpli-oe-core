@@ -35,7 +35,10 @@ ENIGMA2_PLUGINS += " \
 	enigma2-plugin-extensions-linuxsatpanel \
 	enigma2-plugin-extensions-tvmanager \
 	enigma2-plugin-oaweatherpli \
+	enigma2-plugin-extensions-bitrate  \
 	python3-pillow \
+	python3-difflib \
+	enigma2-plugin-extensions-imdb \
 	\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \

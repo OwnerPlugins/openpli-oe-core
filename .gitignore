@@ -11,3 +11,5 @@ site.conf
 bblayers.conf
 *~
 bitbake-cookerdaemon.log
+Zone.Identifier
+Zone.Identifier

@@ -13,7 +13,7 @@ PV = "3.9+git${SRCPV}"
 PKGV = "3.9+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://github.com/Belfagor2005/tvManager.git;protocol=https;branch=main"
+SRC_URI = "git://github.com/OwnerPlugins/tvManager.git;protocol=https;branch=main"
 
 S = "${WORKDIR}/git"
 

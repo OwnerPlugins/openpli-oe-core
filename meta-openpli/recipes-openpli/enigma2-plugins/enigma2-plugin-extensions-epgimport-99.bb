@@ -11,7 +11,7 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://github.com/Belfagor2005/EPGImport-99.git;protocol=https;branch=main"
+SRC_URI = "git://github.com/OwnerPlugins/EPGImport-99.git;protocol=https;branch=main"
 
 S = "${WORKDIR}/git"
 

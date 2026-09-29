@@ -28,6 +28,12 @@ RDEPENDS:${PN} = "python3-core \
 
 inherit setuptools3 python3-dir python3-compileall gitpkgv
 
+do_configure:prepend() {
+    # Removes the Python 3.15 classifier that doesn't exist on PyPI
+    sed -i '/"Programming Language :: Python :: 3.15",/d' ${S}/pyproject.toml
+}
+
+
 PV = "8.2.1+git"
 PKGV = "8.2.1+git${GITPKGV}"
 
