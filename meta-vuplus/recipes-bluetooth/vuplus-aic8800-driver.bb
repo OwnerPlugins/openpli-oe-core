@@ -1,7 +1,7 @@
 SUMMARY = "vuplus Drivers for AIC8800 for ${MACHINEBUID}"
 SECTION = "base"
 PRIORITY = "optional"
-PACKAGE_ARCH = "${MACHINEBUILD}"
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 LICENSE = "CLOSED"
 
 COMPATIBLE_MACHINE = "^(vuduo4klite)$"
@@ -14,11 +14,10 @@ PV = "5.0+git"
 PKGV = "5.0+git${GITPKGV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/oe-alliance-drivers/aic8800.git;protocol=https;branch=master;destsuffix=s"
+SRC_URI = "git://github.com/oe-alliance-drivers/aic8800.git;protocol=https;branch=master"
 SRCREV = "${AUTOREV}"
 
-UNPACKDIR = "${WORKDIR}/u"
-S = "${UNPACKDIR}/s/src/USB/driver_fw/drivers"
+S = "${WORKDIR}/git/src/USB/driver_fw/drivers"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
@@ -27,7 +26,7 @@ INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 EXTRA_OEMAKE = "CONFIG_PLATFORM_UBUNTU=y"
 # WPA3-SAE: the driver gates external auth on kernel 4.17, and our kernels carry
 # the cfg80211 backport instead.
-export KCFLAGS += " -std=gnu17 -fgnu89-inline -Wno-error -DCONFIG_WPA3_FOR_OLD_KERNEL"
+export KCFLAGS += " -std=gnu17 -fgnu89-inline -Wno-error"
 
 do_compile() {
     oe_runmake -C ${STAGING_KERNEL_BUILDDIR} M=${S}/aic8800 modules
