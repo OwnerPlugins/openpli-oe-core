@@ -21,6 +21,7 @@ EXTRA_OEMAKE = "PYTHON=${PYTHON}"
 
 do_compile:prepend() {
     cd ${S}
+    sed -i '/Programming Language :: Python :: 3\.15/d' pyproject.toml
     oe_runmake lazy-extractors completions/bash/yt-dlp
 }
 
