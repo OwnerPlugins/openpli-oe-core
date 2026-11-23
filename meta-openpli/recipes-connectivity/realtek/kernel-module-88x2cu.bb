@@ -7,9 +7,8 @@ LIC_FILES_CHKSUM = "file://ifcfg-wlan0;md5=6061d24ec65e191716f64bb3fe580790"
 inherit module
 
 # backward compatibility
-RPROVIDES:${PN} = "rtl8822bu"
+RPROVIDES:${PN} = "rtl8822cu"
 
-SRCREV = "${AUTOREV}"
 SRC_URI = " \
     git://github.com/atvcaptain/RTL8822C.git;protocol=https;branch=main \
 "
